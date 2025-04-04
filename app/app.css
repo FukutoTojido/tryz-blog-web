@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+	--font-sans: Rubik, sans-serif, "Meiryo UI", "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--color-accent: #bababa;
+	--color-dark: #161616;
+	--color-highlight: #484848;
+
+	--color-base: #1e1e2e;
+	--color-mantle: #181825;
+	--color-crust: #11111b;
+
+	--color-surface-0: #313244;
+	--color-surface-1: #45475a;
+	--color-surface-2: #585b70;
+
+	--color-overlay-0: #6c7086;
+	--color-overlay-1: #7f849c;
+	--color-overlay-2: #9399b2;
+
+	--color-subtext-0: #a6adc8;
+	--color-subtext-1: #bac2de;
+
+	--color-text: #cdd6f4;
+}
+
+h1 {
+	@apply text-2xl;
+	font-weight: 500;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border-bottom: solid 1px var(--color-overlay-0);
+}
+
+h1:first-child {
+	margin-top: 0;
+}
+
+h2 {
+	@apply text-xl;
+	font-weight: 500;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border-bottom: solid 1px var(--color-overlay-0);
+}
+
+h3 {
+	@apply text-lg;
+	font-weight: 500;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+h4 {
+	@apply text-base;
+	font-weight: 500;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+h5 {
+	@apply text-sm;
+	font-weight: 500;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+h6 {
+	@apply text-xs;
+	font-weight: 500;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+table {
+	border: solid 2px var(--color-overlay-0);
+	margin: 1rem 0;
+}
+
+thead {
+	border-bottom: solid 2px var(--color-overlay-0);
+}
+
+th,
+td {
+	padding: 10px;
+	border: solid 2px var(--color-overlay-0);
+}
+
+ul {
+	list-style-type: disc;
+	padding-inline-start: 40px;
+}
+
+pre {
+	padding: 20px;
+	background-color: var(--color-crust);
+	border-radius: 10px;
+	margin: 1rem 0;
+
+	white-space: pre-wrap;
+}
+
+blockquote {
+	position: relative;
+	padding-left: 20px;
+	background-color: var(--color-mantle);
+	margin: 1rem 0;
+	font-style: italic;
+}
+
+blockquote::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 10px;
+	height: 100%;
+
+	background-color: var(--color-surface-2);
+}
+
+a:hover {
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+
+code {
+	font-family: Fira Mono, monospace;
+	box-sizing: content-box;
+	padding: 5px;
+	background-color: var(--color-crust);
+	line-height: 2rem;
+	border-radius: 5px;
+}
+
+pre code {
+	font-family: Fira Mono, monospace;
+	line-height: initial;
+	padding: initial;
+	background: transparent;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+.monaco-editor {
+	outline: none;
+}
+
+a.blogItem:hover {
+	text-decoration: none;
+}
+
+.in-0 {
+    font-weight: 500;
+}
+
+.in-1 {
+    padding-left: 20px;
+    font-weight: 400;
+}
+
+.in-1::before {
+    content: "└";
+    padding-right: 10px;
+    text-decoration: unset;
+}
