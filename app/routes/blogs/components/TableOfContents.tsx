@@ -1,5 +1,3 @@
-import { RiMenu2Fill } from "@remixicon/react";
-import { useState, type Dispatch, type SetStateAction } from "react";
 import { Link } from "react-router";
 
 interface IHeadingData {
