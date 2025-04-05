@@ -5,7 +5,7 @@ import { RiCalendar2Fill } from "@remixicon/react";
 const getSign = (num: number) => (num === -1 ? "-" : "+");
 const padStart = (num: number) => num.toString().padStart(2, "0");
 
-const getDateFromISO = (date: string) => {
+export const getDateFromISO = (date: string) => {
 	const dateObj = new Date(date);
 	const timezoneOffset = new Date().getTimezoneOffset();
 	dateObj.setMinutes(dateObj.getMinutes() - timezoneOffset);
@@ -26,11 +26,15 @@ export default function BlogItem({ data }: { data: BlogHeader }) {
 	return (
 		<Link to={`blogs/${data.id}`} className="blogItem">
 			<div className="w-full rounded-xl flex flex-col overflow-hidden transition hover:bg-surface-0 bg-mantle border-1 border-overlay-0">
-				<img
-					src={data.thumbnail}
-					alt=""
-					className="w-full h-[200px] object-cover"
-				/>
+				{data.thumbnail ? (
+					<img
+						src={data.thumbnail}
+						alt=""
+						className="w-full h-[200px] object-cover"
+					/>
+				) : (
+					""
+				)}
 				<div className="w-full flex flex-col p-5">
 					<div className="text-2xl font-medium no-underline">{data.title}</div>
 					<div className="text-sm font-regular text-subtext-0 line-clamp-2">
@@ -38,7 +42,7 @@ export default function BlogItem({ data }: { data: BlogHeader }) {
 					</div>
 					<div className="w-full flex gap-2.5 pt-4 items-center">
 						<RiCalendar2Fill size={16} />
-						<div className="text-xs text-slate-300">
+						<div className="text-xs text-subtext-0">
 							{getDateFromISO(data.timestamp)}
 						</div>
 					</div>

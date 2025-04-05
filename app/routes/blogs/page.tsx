@@ -1,12 +1,15 @@
-import Markdown from "react-markdown";
+import { MarkdownHooks } from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeStarryNight from "rehype-starry-night";
 import markdownComponents from "../markdown";
 import axios, { type AxiosError } from "axios";
 import type { Route } from "./+types/page";
 import Navigation from "~/components/Navigation";
 import TableOfContents from "./components/TableOfContents";
 import { useState } from "react";
-import { RiMenuFill } from "@remixicon/react";
+import { RiCalendar2Fill, RiMenuFill } from "@remixicon/react";
+import { getDateFromISO } from "../index/components/BlogItem";
+import Loader from "~/components/Loader";
 
 interface IHeadingData {
 	level: number;
@@ -60,6 +63,12 @@ export default function Page({ loaderData }: Route.ComponentProps) {
 						<div className="text-lg text-subtext-0">
 							{loaderData.description}
 						</div>
+						<div className="w-full flex gap-2.5 items-center">
+							<RiCalendar2Fill size={16} />
+							<div className="text-xs text-subtext-0">
+								Posted on {getDateFromISO(loaderData.timestamp)}
+							</div>
+						</div>
 					</div>
 					<img
 						src={`${loaderData.thumbnail}?${Date.now()}`}
@@ -67,12 +76,14 @@ export default function Page({ loaderData }: Route.ComponentProps) {
 						className="w-full h-auto rounded-xl object-cover object-center"
 					/>
 					<div className="w-full">
-						<Markdown
+						<MarkdownHooks
+							fallback={<Loader />}
 							remarkPlugins={[remarkGfm]}
+							rehypePlugins={[rehypeStarryNight]}
 							components={markdownComponents}
 						>
 							{loaderData.content}
-						</Markdown>
+						</MarkdownHooks>
 					</div>
 				</div>
 				<div className="border-r-2 border-surface-2 max-lg:hidden" />

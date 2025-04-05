@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
-import Markdown from "react-markdown";
+import { MarkdownHooks } from "react-markdown";
+import rehypeStarryNight from "rehype-starry-night";
 import remarkGfm from "remark-gfm";
+import Loader from "~/components/Loader";
 import markdownComponents from "~/routes/markdown";
 
 export default function Preview({ code }: { code: string }) {
@@ -15,9 +17,14 @@ export default function Preview({ code }: { code: string }) {
 			className="flex-1 max-lg:max-h-102 max-lg:h-102 p-5 overflow-auto rounded-xl border-overlay-0 border-1 lg:h-full"
 			ref={mdxRef}
 		>
-			<Markdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+			<MarkdownHooks
+				fallback={<Loader />}
+				remarkPlugins={[remarkGfm]}
+				rehypePlugins={[rehypeStarryNight]}
+				components={markdownComponents}
+			>
 				{code}
-			</Markdown>
+			</MarkdownHooks>
 		</div>
 	);
 }
