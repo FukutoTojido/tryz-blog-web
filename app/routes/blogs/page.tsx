@@ -40,9 +40,21 @@ export async function clientLoader({ params }: Route.LoaderArgs) {
 	}
 }
 
-export function meta({
-	data: { thumbnail, title, description },
-}: Route.MetaArgs) {
+export function meta({ data }: Route.MetaArgs) {
+	if (!data)
+		return [
+			{ title: "Not Found | FukutoTojido's blog" },
+			{ property: "og:title", content: "Not Found | FukutoTojido's blog" },
+			{ property: "og:url", content: "https://blog.try-z.net" },
+			{
+				name: "twitter:title",
+				content: "Not Found | FukutoTojido's blog",
+			},
+			{ property: "twitter:url", content: "https://blog.try-z.net" },
+			{ property: "twitter:domain", content: "blog.try-z.net" },
+		];
+
+	const { thumbnail, title, description } = data;
 	const meta = [
 		{ title: `${title} | FukutoTojido's blog` },
 		{
@@ -64,7 +76,6 @@ export function meta({
 			name: "twitter:description",
 			content: description,
 		},
-
 		{ property: "twitter:url", content: "https://blog.try-z.net" },
 		{ property: "twitter:domain", content: "blog.try-z.net" },
 	];
