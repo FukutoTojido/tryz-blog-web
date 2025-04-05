@@ -1,5 +1,41 @@
 import { RiGithubFill, RiTwitterFill } from "@remixicon/react";
 import { Link, Outlet } from "react-router";
+import type { Route } from "./+types/layout";
+
+export function meta() {
+	return [
+		{ title: "FukutoTojido's blog" },
+		{
+			name: "description",
+			content: "Welcome to the blog of an iDOLM@STER enjoyer.",
+		},
+		{ property: "og:title", content: "FukutoTojido's blog" },
+		{
+			property: "og:description",
+			content: "Welcome to the blog of an iDOLM@STER enjoyer.",
+		},
+		{
+			property: "og:image",
+			content: "https://cdn.try-z.net/615454066033557504-preview",
+		},
+		{ property: "og:url", content: "https://blog.try-z.net" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{
+			name: "twitter:title",
+			content: "FukutoTojido's blog",
+		},
+		{
+			name: "twitter:description",
+			content: "Welcome to the blog of an iDOLM@STER enjoyer.",
+		},
+		{
+			name: "twitter:image",
+			content: "https://cdn.try-z.net/615454066033557504-preview",
+		},
+		{ property: "twitter:url", content: "https://blog.try-z.net" },
+		{ property: "twitter:domain", content: "blog.try-z.net" },
+	];
+}
 
 export default function Layout() {
 	return (
@@ -44,7 +80,7 @@ export default function Layout() {
 									target="_blank"
 									className="hover:drop-shadow-glow p-2 rounded-md hover:bg-white/20 transition-colors"
 								>
-									<RiTwitterFill size={30}/>
+									<RiTwitterFill size={30} />
 								</Link>
 							</div>
 							<p className="max-lg:hidden">

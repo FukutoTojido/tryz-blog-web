@@ -40,6 +40,66 @@ export async function clientLoader({ params }: Route.LoaderArgs) {
 	}
 }
 
+export function meta({
+	data: { thumbnail, title, description },
+}: Route.MetaArgs) {
+	const meta = [
+		{ title: `${title} | FukutoTojido's blog` },
+		{
+			name: "description",
+			content: description,
+		},
+		{ property: "og:title", content: `${title} | FukutoTojido's blog` },
+		{
+			property: "og:description",
+			content: description,
+		},
+		{ property: "og:url", content: "https://blog.try-z.net" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{
+			name: "twitter:title",
+			content: `${title} | FukutoTojido's blog`,
+		},
+		{
+			name: "twitter:description",
+			content: description,
+		},
+
+		{ property: "twitter:url", content: "https://blog.try-z.net" },
+		{ property: "twitter:domain", content: "blog.try-z.net" },
+	];
+
+	if (thumbnail) {
+		meta.push(
+			...[
+				{
+					property: "og:image",
+					content: thumbnail,
+				},
+				{
+					name: "twitter:image",
+					content: thumbnail,
+				},
+			],
+		);
+	} else {
+		meta.push(
+			...[
+				{
+					property: "og:image",
+					content: "https://cdn.try-z.net/615454066033557504-preview",
+				},
+				{
+					name: "twitter:image",
+					content: "https://cdn.try-z.net/615454066033557504-preview",
+				},
+			],
+		);
+	}
+
+	return meta;
+}
+
 export default function Page({ loaderData }: Route.ComponentProps) {
 	const [showToC, setShowToC] = useState(false);
 

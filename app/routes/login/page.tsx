@@ -3,6 +3,10 @@ import { useNavigate } from "react-router";
 import Cookie from "universal-cookie";
 import axios from "axios";
 
+export function meta() {
+	return [{ title: "Login | FukutoTojido's Blog" }];
+}
+
 export default function Page() {
 	const navigate = useNavigate();
 	const submit = useCallback(
@@ -43,7 +47,10 @@ export default function Page() {
 					action={submit}
 					className="bg-base/96 text-text w-[400px] max-w-full p-5 rounded-xl border-1 border-overlay-2 shadow-md flex flex-col gap-2.5 backdrop-blur-md"
 				>
-					<div className="font-bold text-xl text-center">TRY-Z.net</div>
+					<div className="flex items-center gap-2.5 justify-center p-2.5 drop-shadow-md">
+						<img src="/tryz.svg" alt="" width={50} />
+						<div className="font-bold text-xl text-center">TRY-Z.net</div>
+					</div>
 					<label htmlFor="username" className="text-sm">
 						Username
 					</label>
