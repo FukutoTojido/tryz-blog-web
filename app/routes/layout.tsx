@@ -45,8 +45,8 @@ export default function Layout() {
 				src={"/Rinami.png"}
 				alt=""
 			/>
-			<div className="absolute w-screen min-h-dvh lg:overflow-hidden overflow-auto lg:p-2.5 p-0 flex flex-col gap-2.5">
-				<div className="bg-base/96 text-text h-full flex-1\ p-5 rounded-xl max-lg:rounded-none border-1 max-lg:border-0 border-overlay-0 overflow-hidden shadow-xl backdrop-blur-md">
+			<div className="absolute w-screen min-h-dvh h-full lg:overflow-hidden overflow-auto lg:p-2.5 p-0 flex flex-col gap-2.5">
+				<div className="bg-base/96 text-text h-full flex-1 p-5 rounded-xl max-lg:rounded-none border-1 max-lg:border-0 border-overlay-0 overflow-hidden shadow-xl backdrop-blur-md">
 					<div className="w-full h-full flex gap-2.5 max-lg:flex-col">
 						<div className="w-[250px] max-lg:w-full h-full max-lg:h-auto flex flex-col gap-5 p-5 max-lg:p-0">
 							<div className="w-full flex flex-col max-lg:flex-row gap-5">

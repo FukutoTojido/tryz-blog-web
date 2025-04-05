@@ -6,7 +6,7 @@ import axios, { type AxiosError } from "axios";
 import type { Route } from "./+types/page";
 import Navigation from "~/components/Navigation";
 import TableOfContents from "./components/TableOfContents";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { RiCalendar2Fill, RiMenuFill } from "@remixicon/react";
 import { getDateFromISO } from "../index/components/BlogItem";
 import Loader from "~/components/Loader";
@@ -111,6 +111,19 @@ export function meta({ data }: Route.MetaArgs) {
 	return meta;
 }
 
+const MarkdownMemo = memo(({ content }: { content: string }) => {
+	return (
+		<MarkdownHooks
+			fallback={<Loader />}
+			remarkPlugins={[remarkGfm]}
+			rehypePlugins={[rehypeStarryNight]}
+			components={markdownComponents}
+		>
+			{content}
+		</MarkdownHooks>
+	);
+});
+
 export default function Page({ loaderData }: Route.ComponentProps) {
 	const [showToC, setShowToC] = useState(false);
 
@@ -147,14 +160,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
 						className="w-full h-auto rounded-xl object-cover object-center"
 					/>
 					<div className="w-full">
-						<MarkdownHooks
-							fallback={<Loader />}
-							remarkPlugins={[remarkGfm]}
-							rehypePlugins={[rehypeStarryNight]}
-							components={markdownComponents}
-						>
-							{loaderData.content}
-						</MarkdownHooks>
+						<MarkdownMemo content={loaderData.content} />
 					</div>
 				</div>
 				<div className="border-r-2 border-surface-2 max-lg:hidden" />
