@@ -28,7 +28,7 @@ export default function BlogItem({ data }: { data: BlogHeader }) {
 			<div className="w-full rounded-xl flex flex-col overflow-hidden transition hover:bg-surface-0 bg-mantle border-1 border-overlay-0">
 				{data.thumbnail ? (
 					<img
-						src={data.thumbnail}
+						src={`${data.thumbnail}?${Date.now()}`}
 						alt=""
 						className="w-full h-[200px] object-cover"
 					/>
