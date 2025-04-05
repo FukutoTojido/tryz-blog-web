@@ -16,7 +16,7 @@ interface IHeadingData {
 	content: string;
 }
 
-export async function clientLoader({ params }: Route.LoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
 	try {
 		const { data } = await axios.get(
 			`${import.meta.env.VITE_SERVER_ENDPOINT}/api/blogs/${params.id}`,
