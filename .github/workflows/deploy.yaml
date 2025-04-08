@@ -1,0 +1,30 @@
+name: tryz-blog-web CD
+
+on:
+    push:
+        branches: [ master ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Deploy using ssh
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.PRIVATE_KEY }}
+            port: 22
+            script: |
+              #!/usr/bin/env bash
+              set -e
+              export NVM_DIR=~/.nvm
+              source ~/.nvm/nvm.sh
+              PATH="/home/ubuntu/.bun/bin/:$PATH"
+              cd ~/tryz-blog/tryz-blog-web
+              git pull origin master
+              git status
+              bun install
+              bun run build
+              pm2 restart tryz-blog-web
